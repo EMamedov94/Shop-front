@@ -1,0 +1,16 @@
+<h1>Корзина</h1>
+<div class="cart-block">
+  <div class="cart-items">
+    <ul *ngFor="let item of cartItems" class="cart-list">
+      <li class="cart-item">
+        <h4>{{item.product.name}}</h4>
+        <p>{{item.qty}}</p>
+      </li>
+    </ul>
+  </div>
+  <div class="total-block">
+    <p>Количество товаров: {{totalItems}}</p>
+    <p>Сумма: {{totalSum}}</p>
+    <button>Перейти к оформлению</button>
+  </div>
+</div>

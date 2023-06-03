@@ -1,0 +1,16 @@
+<h1>Профиль</h1>
+<div>
+  <p>Почта {{email}}</p>
+  <p>Баланс {{balance}}</p>
+</div>
+<div>
+  <p>Добавить продукт</p>
+  <form (ngSubmit)="addProduct(name, photo, description, price, qty)">
+    <input type="text" name="name" [(ngModel)]="name">
+    <input type="file" name="photo" [(ngModel)]="photo">
+    <textarea name="description" cols="20" rows="10" [(ngModel)]="description"></textarea>
+    <input type="number" name="price" [(ngModel)]="price">
+    <input type="number" name="qty" [(ngModel)]="qty">
+    <button type="submit">Добавить</button>
+  </form>
+</div>

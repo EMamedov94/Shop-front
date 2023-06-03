@@ -1,0 +1,7 @@
+<h2>products</h2>
+<div class="products" *ngFor="let product of products">
+  <a [routerLink]="['product', product.id]" class="product_card">
+    <h4>{{product.name}}</h4>
+    <p>{{product.price}}</p>
+  </a>
+</div>

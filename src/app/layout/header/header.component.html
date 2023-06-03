@@ -1,0 +1,12 @@
+<header>
+  <h1 [routerLink]="['']">Shop</h1>
+  <nav>
+    <ul class="nav-menu">
+      <li *ngIf="!logIn" (click)="openAuthMenu()">Войти</li>
+      <li *ngIf="logIn"><a [routerLink]="['profile', id]" >Профиль</a></li>
+      <li><a [routerLink]="['cart']">Корзина {{cartQty}}</a></li>
+      <li *ngIf="logIn" (click)="logout()"><button type="submit">Выйти</button></li>
+    </ul>
+  </nav>
+</header>
+<router-outlet></router-outlet>
