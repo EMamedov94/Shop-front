@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {AuthComponent} from "./auth/auth.component";
 import {CookieService} from "ngx-cookie-service";
 import {HttpBackend, HttpClient} from "@angular/common/http";
+import {LoginComponent} from "./auth/login/login.component";
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ import {HttpBackend, HttpClient} from "@angular/common/http";
 export class HeaderComponent {
 
   constructor(private dialog: MatDialog,
-              private http: HttpClient) {
+              private loginComp: LoginComponent) {
   }
 
   id: any = localStorage.getItem('userId');
@@ -24,6 +25,10 @@ export class HeaderComponent {
 
   get logIn(): boolean {
     return (localStorage.getItem('token') != null);
+  }
+
+  get isAdmin(): boolean {
+    return (localStorage.getItem('admin') && this.logIn) == true
   }
 
   openAuthMenu() {

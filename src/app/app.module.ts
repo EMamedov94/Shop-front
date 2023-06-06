@@ -16,6 +16,8 @@ import { AuthComponent } from './layout/header/auth/auth.component';
 import { CartComponent } from './layout/header/cart/cart.component';
 import { ProductsComponent } from './page/products/products.component';
 import { ProductPageComponent } from './page/products/product-page/product-page.component';
+import { AdminPageComponent } from './page/admin-page/admin-page.component';
+import { UsersListComponent } from './page/admin-page/users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { ProductPageComponent } from './page/products/product-page/product-page.
     AuthComponent,
     CartComponent,
     ProductsComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    AdminPageComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,10 @@ import { ProductPageComponent } from './page/products/product-page/product-page.
     MatDialogModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [
+    ProductPageComponent,
+    LoginComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

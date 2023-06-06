@@ -21,11 +21,4 @@ export class ProductsComponent {
       }
     );
   }
-
-  // removeProduct() {
-  //   // this.http.post<>(this.service.url + '/removeProduct', {})
-  // }
-  //
-  //
-  //
 }

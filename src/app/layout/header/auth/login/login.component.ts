@@ -10,14 +10,13 @@ import {MatDialog} from "@angular/material/dialog";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private http: HttpClient,
-              private func: FuncService) {
+  constructor(private http: HttpClient) {
   }
   email: string = ""
   password: string = ""
 
   onLogin(email: string, password: string) {
-    this.http.post<any>(this.func.url + "/login", {email, password}, {
+    this.http.post<any>('/api' + "/login", {email, password}, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -26,6 +25,9 @@ export class LoginComponent {
         localStorage.setItem("token", res.token)
         localStorage.setItem("userInfo", JSON.stringify(res))
         localStorage.setItem("userId", res.id)
+        if (res.role == 'ROLE_ADMIN') {
+          localStorage.setItem('admin', res.role);
+        }
       })
     });
   }

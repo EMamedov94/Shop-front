@@ -7,11 +7,15 @@ import {ProfileComponent} from "./page/profile/profile.component";
 import {CartComponent} from "./layout/header/cart/cart.component";
 import {AppComponent} from "./app.component";
 import {ProductPageComponent} from "./page/products/product-page/product-page.component";
+import {UsersListComponent} from "./page/admin-page/users-list/users-list.component";
+import {AdminPageComponent} from "./page/admin-page/admin-page.component";
 
 const routes: Routes = [
   {path: 'profile/:id', component: ProfileComponent},
   {path: 'cart', component: CartComponent},
-  {path: 'product/:id', component: ProductPageComponent}
+  {path: 'product/:id', component: ProductPageComponent},
+  {path: 'adminPage', component: AdminPageComponent},
+  {path: 'adminPage/showAllUsers', component: UsersListComponent}
 ]
 
 @NgModule({

@@ -21,6 +21,7 @@ export class ProductPageComponent {
   price: any;
   seller: any;
   added: boolean = false;
+  count: any = 0;
 
   ngOnInit() {
     this.http.get<any>('/api' + '/product/' + this.pathId).subscribe({
@@ -35,20 +36,31 @@ export class ProductPageComponent {
   }
 
   addProduct(id: any, qty: any) {
-      this.http.post<any>('/api' + '/addProduct', {id, qty}, {
+    this.http.post<any>('/api' + '/addProduct', {id, qty}, {
         headers: {
           'Content-Type': 'application/json'
-        }, withCredentials: true
-      }).subscribe();
+        }
+    }).subscribe();
+
+    this.getTotalItems();
+    this.added = true
+  }
+
+  removeProduct(id: any, qty: any) {
+    this.http.post<any>('/api' + '/removeProduct', {id, qty}, {
+      headers: {
+        'Content-Type': 'application/json'
+      }, withCredentials: true
+    }).subscribe();
+
+    this.getTotalItems();
+  }
+
+  getTotalItems() {
     this.http.get('/api' + '/cart').subscribe({
       next: ((res: any) => {
         this.headerComp.cartQty = res.totalItems;
       })
     });
-    this.added = true
-  }
-
-  removeProduct() {
-
   }
 }

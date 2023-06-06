@@ -10,8 +10,7 @@ import {RegistrationComponent} from "./registration/registration.component";
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
-  constructor(private dialog: MatDialog,
-              private func: FuncService) {
+  constructor(private dialog: MatDialog) {
   }
 
   openLogin() {

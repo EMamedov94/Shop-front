@@ -4,7 +4,7 @@
   <p>{{price}} р.</p>
   <p>Продавец: {{seller}}</p>
   <div *ngIf="added">
-    <button (click)="removeProduct()"> - </button>
+    <button (click)="removeProduct(id, 1)"> - </button>
     <button (click)="addProduct(id, 1)"> + </button>
   </div>
   <div *ngIf="!added">
