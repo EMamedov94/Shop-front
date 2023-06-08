@@ -1,0 +1,12 @@
+.product-block {
+  max-width: 100%;
+  display: flex;
+}
+.product-block-img {
+  max-width: 50%;
+}
+.product-block-descr {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+}

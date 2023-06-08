@@ -1,0 +1,13 @@
+.products-block {
+  display: flex;
+  justify-content: space-between;
+}
+.product_card {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 200px;
+}
+.product_card-img {
+  max-width: 100%;
+}

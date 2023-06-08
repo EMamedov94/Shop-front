@@ -1,7 +1,12 @@
 <h2>products</h2>
-<div class="products" *ngFor="let product of products">
-  <a [routerLink]="['product', product.id]" class="product_card">
-    <h4>{{product.name}}</h4>
-    <p>{{product.price}}</p>
-  </a>
+<div class="products-block">
+  <div class="products" *ngFor="let product of products">
+    <a [routerLink]="['product', product.id]" class="product_card">
+      <img class="product_card-img" [src]="product.photoUrl" alt="img">
+      <div>
+        <h4>{{product.name}}</h4>
+        <p>{{product.price}}</p>
+      </div>
+    </a>
+  </div>
 </div>

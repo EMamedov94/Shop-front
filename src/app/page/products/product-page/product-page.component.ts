@@ -16,6 +16,7 @@ export class ProductPageComponent {
 
   pathId: any = this.activatedRoute.snapshot.paramMap.get('id');
   id: any;
+  img: any;
   name: any;
   description: any;
   price: any;
@@ -27,6 +28,7 @@ export class ProductPageComponent {
     this.http.get<any>('/api' + '/product/' + this.pathId).subscribe({
       next: ((res: any) => {
         this.id = res.id;
+        this.img = res.photoUrl;
         this.name = res.name;
         this.description = res.description;
         this.price = res.price;
