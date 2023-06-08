@@ -16,11 +16,7 @@ export class LoginComponent {
   password: string = ""
 
   onLogin(email: string, password: string) {
-    this.http.post<any>('/api' + "/login", {email, password}, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).subscribe({
+    this.http.post<any>('/api' + "/login", {email, password}).subscribe({
       next: ((res: any) => {
         localStorage.setItem("token", res.token)
         localStorage.setItem("userInfo", JSON.stringify(res))

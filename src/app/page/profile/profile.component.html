@@ -5,9 +5,9 @@
 </div>
 <div>
   <p>Добавить продукт</p>
-  <form (ngSubmit)="addProduct(name, photo, description, price, qty)">
+  <form (ngSubmit)="addProduct(name, description, price, qty)">
     <input type="text" name="name" [(ngModel)]="name">
-    <input type="file" name="photo" [(ngModel)]="photo">
+    <input type="file" name="photoUrl" (change)="onFileSelected($event)">
     <textarea name="description" cols="20" rows="10" [(ngModel)]="description"></textarea>
     <input type="number" name="price" [(ngModel)]="price">
     <input type="number" name="qty" [(ngModel)]="qty">

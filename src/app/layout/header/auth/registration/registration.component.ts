@@ -16,11 +16,7 @@ export class RegistrationComponent {
   password: string = ""
 
   onRegistration(email: string, password: string) {
-    this.http.post<any>(this.func.url + "/registrationNewUser", {email, password}, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).subscribe({
+    this.http.post<any>(this.func.url + "/registrationNewUser", {email, password}).subscribe({
         next: ((res: any) => {
           console.log(res)
         }),
