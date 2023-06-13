@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {FuncService} from "./service/funcs-service.service";
 
 @Component({
   selector: 'app-root',
@@ -8,5 +6,4 @@ import {FuncService} from "./service/funcs-service.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
 }

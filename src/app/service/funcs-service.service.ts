@@ -13,4 +13,8 @@ export class FuncService {
   isAuth(): boolean {
     return (localStorage.getItem('token') != null);
   }
+
+  close(): void {
+
+  }
 }

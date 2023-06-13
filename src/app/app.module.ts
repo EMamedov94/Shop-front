@@ -38,13 +38,12 @@ import { UsersListComponent } from './page/admin-page/users-list/users-list.comp
     HttpClientModule,
     RouterModule,
     AppRoutingModule,
-    FormsModule,
-    MatDialogModule,
-    MatButtonModule
+    FormsModule
   ],
   providers: [
     ProductPageComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent
   ],
   bootstrap: [AppComponent]
 })

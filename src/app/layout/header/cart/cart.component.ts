@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {FuncService} from "../../../service/funcs-service.service";
 import {ProductPageComponent} from "../../../page/products/product-page/product-page.component";
 
 @Component({

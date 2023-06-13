@@ -9,8 +9,10 @@ import {AppComponent} from "./app.component";
 import {ProductPageComponent} from "./page/products/product-page/product-page.component";
 import {UsersListComponent} from "./page/admin-page/users-list/users-list.component";
 import {AdminPageComponent} from "./page/admin-page/admin-page.component";
+import {ProductsComponent} from "./page/products/products.component";
 
 const routes: Routes = [
+  {path: '', component: ProductsComponent},
   {path: 'profile/:id', component: ProfileComponent},
   {path: 'cart', component: CartComponent},
   {path: 'product/:id', component: ProductPageComponent},

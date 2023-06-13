@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import {MatDialog} from "@angular/material/dialog";
-import {LoginComponent} from "./login/login.component";
-import {FuncService} from "../../../service/funcs-service.service";
-import {RegistrationComponent} from "./registration/registration.component";
+import {HeaderComponent} from "../header.component";
 
 @Component({
   selector: 'app-auth',
@@ -10,22 +7,16 @@ import {RegistrationComponent} from "./registration/registration.component";
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
-  constructor(private dialog: MatDialog) {
+  constructor(private headerComp: HeaderComponent) {
   }
 
   openLogin() {
-    this.dialog.open(LoginComponent, {
-      width: '500px',
-      height: '300px'
-    });
-    this.dialog.getDialogById('auth-block')?.close();
+    this.headerComp.isVisibleLogin = true;
+    this.headerComp.isVisible = false;
   }
 
   openRegistration() {
-    this.dialog.open(RegistrationComponent, {
-      width: '500px',
-      height: '300px'
-    });
-    this.dialog.getDialogById('auth-block')?.close();
+    this.headerComp.isVisibleRegistration = true;
+    this.headerComp.isVisible = false;
   }
 }
