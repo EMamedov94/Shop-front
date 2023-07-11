@@ -7,16 +7,16 @@ import {HeaderComponent} from "../header.component";
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
-  constructor(private headerComp: HeaderComponent) {
+  isVisibleLoginBlock: boolean = false;
+  isVisibleRegistrationBlock: boolean = false;
+  constructor() {
   }
 
   openLogin() {
-    this.headerComp.isVisibleLogin = true;
-    this.headerComp.isVisible = false;
+    this.isVisibleLoginBlock = true;
   }
 
   openRegistration() {
-    this.headerComp.isVisibleRegistration = true;
-    this.headerComp.isVisible = false;
+    this.isVisibleRegistrationBlock = true;
   }
 }

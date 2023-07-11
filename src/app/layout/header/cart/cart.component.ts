@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ProductPageComponent} from "../../../page/products/product-page/product-page.component";
+import {ProductPageComponent} from "../../product-list/product-page/product-page.component";
 
 @Component({
   selector: 'app-cart',

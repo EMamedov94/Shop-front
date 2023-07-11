@@ -1,23 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {HeaderComponent} from "./layout/header/header.component";
-import {FormsModule} from "@angular/forms";
-import {ProfileComponent} from "./page/profile/profile.component";
 import {CartComponent} from "./layout/header/cart/cart.component";
-import {AppComponent} from "./app.component";
-import {ProductPageComponent} from "./page/products/product-page/product-page.component";
-import {UsersListComponent} from "./page/admin-page/users-list/users-list.component";
-import {AdminPageComponent} from "./page/admin-page/admin-page.component";
-import {ProductsComponent} from "./page/products/products.component";
+import {ProductPageComponent} from "./layout/product-list/product-page/product-page.component";
+import {ProductListComponent} from "./layout/product-list/product-list.component";
 
 const routes: Routes = [
-  {path: '', component: ProductsComponent},
-  {path: 'profile/:id', component: ProfileComponent},
+  {path: '', component: ProductListComponent},
   {path: 'cart', component: CartComponent},
   {path: 'product/:id', component: ProductPageComponent},
-  {path: 'adminPage', component: AdminPageComponent},
-  {path: 'adminPage/showAllUsers', component: UsersListComponent}
 ]
 
 @NgModule({

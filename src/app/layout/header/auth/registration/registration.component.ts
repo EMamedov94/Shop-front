@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {FuncService} from "../../../../service/funcs-service.service";
-import {FormGroup} from "@angular/forms";
+import {HttpClient} from "@angular/common/http";
+import {BasicService} from "../../../../service/basic.service";
+import {HeaderComponent} from "../../header.component";
 
 @Component({
   selector: 'app-registration',
@@ -10,21 +10,28 @@ import {FormGroup} from "@angular/forms";
 })
 export class RegistrationComponent {
   constructor(private http: HttpClient,
-              private func: FuncService) {
+              private headComp: HeaderComponent,
+              private basicService: BasicService) {
   }
 
   email: string = ''
   password: string = ''
   errors: any = ''
-  // registrationForm: FormGroup;
 
   onRegistration(email: string, password: string) {
-    this.http.post<any>(this.func.url + "/registrationNewUser", {email, password}).subscribe({
-        error: err => {
-          this.errors = err.error;
-          console.log(err)
-        }
+    this.http.post<any>(this.basicService.url + "/registrationNewUser", {email, password}).subscribe({
+      next: () => {
+        setTimeout(() => {
+          this.onClose();
+        }, 2000)
+      },
+      error: err => {
+        this.errors = err.error;
       }
-    )
+    })
+  }
+
+  onClose() {
+    this.headComp.isVisibleAuthBlock = false;
   }
 }

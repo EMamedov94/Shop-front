@@ -2,14 +2,12 @@
   <h1 [routerLink]="['']">Shop</h1>
   <nav>
     <ul class="nav-menu">
-      <li *ngIf="isAdmin"><a [routerLink]="['adminPage']">Панель администратора</a></li>
-      <li *ngIf="!logIn" (click)="openAuthMenu()">Войти</li>
-      <li *ngIf="logIn"><a [routerLink]="['profile', id]" >Профиль</a></li>
+      <li *ngIf="!authService.isAuth" (click)="openAuthMenu()">Войти</li>
+<!--      <li *ngIf="!isAuth"><a>Профиль</a></li>-->
       <li><a [routerLink]="['cart']">Корзина {{cartQty}}</a></li>
-      <li *ngIf="logIn" (click)="logout()"><button type="submit">Выйти</button></li>
+      <li *ngIf="authService.isAuth" (click)="logout()"><button type="submit">Выйти</button></li>
     </ul>
   </nav>
 </header>
-<app-auth *ngIf="isVisible"></app-auth>
-<app-login *ngIf="isVisibleLogin"></app-login>
-<app-registration *ngIf="isVisibleRegistration"></app-registration>
+
+<app-auth *ngIf="isVisibleAuthBlock"></app-auth>

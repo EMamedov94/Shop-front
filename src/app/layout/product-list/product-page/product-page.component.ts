@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
-import {HeaderComponent} from "../../../layout/header/header.component";
+import {HeaderComponent} from "../../header/header.component";
 
 @Component({
   selector: 'app-product-page',

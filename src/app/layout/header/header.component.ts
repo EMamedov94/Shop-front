@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {CookieService} from "ngx-cookie-service";
+import {AuthenticationService} from "../../service/authentication.service";
+import {AuthComponent} from "./auth/auth.component";
 
 @Component({
   selector: 'app-header',
@@ -7,28 +10,24 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
-  constructor() {
+  constructor(private cookie: CookieService,
+              public authService: AuthenticationService) {
   }
 
-  id: any = localStorage.getItem('userId');
   cartQty: any;
-  isVisibleLogin: boolean = false;
-  isVisibleRegistration: boolean = false;
-  isVisible: boolean = false;
+  isVisibleAuthBlock: boolean = false;
 
   logout() {
-    localStorage.clear();
-  }
-
-  get logIn(): boolean {
-    return (localStorage.getItem('token') != null);
-  }
-
-  get isAdmin(): boolean {
-    return (localStorage.getItem('admin') && this.logIn) == true
+    this.authService.logout().subscribe({
+      next: (result: any) => {
+        console.log(result);
+        localStorage.clear();
+        this.cookie.delete("token");
+      }
+    });
   }
 
   openAuthMenu() {
-    this.isVisible = !this.isVisible;
+    this.isVisibleAuthBlock = !this.isVisibleAuthBlock;
   }
 }

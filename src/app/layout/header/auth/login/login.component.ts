@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {FuncService} from "../../../../service/funcs-service.service";
-import {MatDialog} from "@angular/material/dialog";
+import {CookieService} from "ngx-cookie-service";
+import {BasicService} from "../../../../service/basic.service";
+import {HeaderComponent} from "../../header.component";
 
 @Component({
   selector: 'app-login',
@@ -10,21 +10,31 @@ import {MatDialog} from "@angular/material/dialog";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private http: HttpClient) {
-  }
+
   email: string = ""
   password: string = ""
 
+  constructor(private http: HttpClient,
+              private basicService: BasicService,
+              private headComp: HeaderComponent,
+              private cookie: CookieService) {
+  }
+
   onLogin(email: string, password: string) {
-    this.http.post<any>('/api' + "/login", {email, password}).subscribe({
+    const body = {
+      email, password
+    }
+
+    this.http.post<any>(this.basicService.url + "/login", body).subscribe({
       next: ((res: any) => {
-        localStorage.setItem("token", res.token)
-        localStorage.setItem("userInfo", JSON.stringify(res))
-        localStorage.setItem("userId", res.id)
-        if (res.role == 'ROLE_ADMIN') {
-          localStorage.setItem('admin', res.role);
-        }
+        this.cookie.set("token", res.token);
+        localStorage.setItem('auth', res.username);
+        this.onClose();
       })
     });
+  }
+
+  onClose() {
+    this.headComp.isVisibleAuthBlock = false;
   }
 }

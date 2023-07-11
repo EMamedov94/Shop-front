@@ -65,8 +65,8 @@
             },
             "development": {
               "browserTarget": "Shop-front:build:development",
-              "proxyConfig": "src/proxy.conf.json",
-              "ssl": true
+              "ssl": true,
+              "sslCert": "ssl/spring_ca.pfx"
             }
           },
           "defaultConfiguration": "development"

@@ -9,15 +9,13 @@ import {RouterModule} from "@angular/router";
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './layout/header/auth/login/login.component';
 import { RegistrationComponent } from './layout/header/auth/registration/registration.component';
-import { ProfileComponent } from './page/profile/profile.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatButtonModule} from "@angular/material/button";
 import { AuthComponent } from './layout/header/auth/auth.component';
 import { CartComponent } from './layout/header/cart/cart.component';
-import { ProductsComponent } from './page/products/products.component';
-import { ProductPageComponent } from './page/products/product-page/product-page.component';
-import { AdminPageComponent } from './page/admin-page/admin-page.component';
-import { UsersListComponent } from './page/admin-page/users-list/users-list.component';
+import { ProductPageComponent } from './layout/product-list/product-page/product-page.component';
+import { TopbarComponent } from './layout/topbar/topbar.component';
+import { ProductListComponent } from './layout/product-list/product-list.component';
+import {CookieService} from "ngx-cookie-service";
+import {AuthenticationService} from "./service/authentication.service";
 
 @NgModule({
   declarations: [
@@ -25,13 +23,11 @@ import { UsersListComponent } from './page/admin-page/users-list/users-list.comp
     HeaderComponent,
     LoginComponent,
     RegistrationComponent,
-    ProfileComponent,
     AuthComponent,
     CartComponent,
-    ProductsComponent,
     ProductPageComponent,
-    AdminPageComponent,
-    UsersListComponent
+    TopbarComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +39,8 @@ import { UsersListComponent } from './page/admin-page/users-list/users-list.comp
   providers: [
     ProductPageComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })
