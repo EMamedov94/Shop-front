@@ -1,10 +1,10 @@
 <div class="product-block">
-  <img class="product-block-img" [src]="img" alt="img">
+  <img class="product-block-img" [src]="productInfo.photoUrl" alt="img">
   <div class="product-block-descr">
-    <h1>{{name}}</h1>
-    <p>Описание: {{description}}</p>
-    <p>{{price}} р.</p>
-    <p>Продавец: {{seller}}</p>
+    <h1>{{productInfo.name}}</h1>
+    <p>Описание: {{productInfo.description}}</p>
+    <p>{{productInfo.price}} р.</p>
+    <p>Продавец: {{productInfo.seller}}</p>
     <div *ngIf="added">
       <button (click)="removeProduct(id, 1)"> - </button>
       <button (click)="addProduct(id, 1)"> + </button>

@@ -1,19 +1,19 @@
 <h1>Корзина</h1>
 <div class="cart-block">
   <div class="cart-items">
-    <ul *ngFor="let item of cartItems" class="cart-list">
+    <ul *ngFor="let item of cartService.cartItems" class="cart-list">
       <li class="cart-item">
         <h4>{{item.product.name}}</h4>
         <p>{{item.qty}}</p>
-        <button (click)="removeProduct(item.id, 1)"> - </button>
-        <button (click)="addProduct(item.id, 1)"> + </button>
-        <button (click)="deleteProductFromCart(item.id)"> X </button>
+        <button (click)="productPageComp.removeProduct(item.product.id, 1)"> - </button>
+        <button (click)="productPageComp.addProduct(item.product.id, 1)"> + </button>
+        <button (click)="deleteProductFromCart(item.product.id)"> X </button>
       </li>
     </ul>
   </div>
   <div class="total-block">
-    <p>Количество товаров: {{totalItems}}</p>
-    <p>Сумма: {{totalSum}}</p>
+    <p>Количество товаров: {{cartService.totalItems}}</p>
+    <p>Сумма: {{cartService.totalSum}}</p>
     <button>Перейти к оформлению</button>
   </div>
 </div>

@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 import {HeaderComponent} from "../../header/header.component";
+import {BasicService} from "../../../service/basic.service";
+import {CookieService} from "ngx-cookie-service";
+import {CartComponent} from "../../header/cart/cart.component";
+import {CartService} from "../../../service/cart.service";
 
 @Component({
   selector: 'app-product-page',
@@ -11,58 +15,52 @@ import {HeaderComponent} from "../../header/header.component";
 export class ProductPageComponent {
   constructor(private http: HttpClient,
               private activatedRoute: ActivatedRoute,
-              private headerComp: HeaderComponent) {
+              private headerComp: HeaderComponent,
+              private basicService: BasicService,
+              private cartService: CartService,
+              private cookie: CookieService) {
   }
 
   pathId: any = this.activatedRoute.snapshot.paramMap.get('id');
   id: any;
-  img: any;
-  name: any;
-  description: any;
-  price: any;
-  seller: any;
+  productInfo: any = '';
   added: boolean = false;
   count: any = 0;
 
   ngOnInit() {
-    this.http.get<any>('/api' + '/product/' + this.pathId).subscribe({
+    this.http.get<any>(this.basicService.url + '/product/' + this.pathId).subscribe({
       next: ((res: any) => {
+        this.productInfo = res;
         this.id = res.id;
-        this.img = res.photoUrl;
-        this.name = res.name;
-        this.description = res.description;
-        this.price = res.price;
-        this.seller = res.seller;
       })
     });
   }
 
   addProduct(id: any, qty: any) {
-    this.http.post<any>('/api' + '/addProduct', {id, qty}, {
+    this.http.post<any>(this.basicService.url + '/addProduct',
+      {id, qty},
+      {
         headers: {
-          'Content-Type': 'application/json'
-        }
-    }).subscribe();
-
-    this.getTotalItems();
-    this.added = true
+          'Authorization': 'Bearer ' + this.cookie.get('token')
+        }, withCredentials: true
+      }).subscribe({
+      next: () => {
+        this.added = true;
+        this.cartService.updateCartItems();
+      }
+    });
   }
 
   removeProduct(id: any, qty: any) {
-    this.http.post<any>('/api' + '/removeProduct', {id, qty}, {
+    this.http.post<any>(this.basicService.url + '/removeProduct',
+      {id, qty},
+      {
       headers: {
-        'Content-Type': 'application/json'
-      }, withCredentials: true
-    }).subscribe();
-
-    this.getTotalItems();
-  }
-
-  getTotalItems() {
-    this.http.get('/api' + '/cart').subscribe({
-      next: ((res: any) => {
-        this.headerComp.cartQty = res.totalItems;
-      })
+        'Authorization': 'Bearer ' + this.cookie.get('token')
+      }, withCredentials: true}).subscribe({
+      next: () => {
+        this.cartService.updateCartItems();
+      }
     });
   }
 }
