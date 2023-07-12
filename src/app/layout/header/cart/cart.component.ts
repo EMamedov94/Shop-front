@@ -11,27 +11,15 @@ import {CookieService} from "ngx-cookie-service";
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent{
-  constructor(private http: HttpClient,
-              public productPageComp: ProductPageComponent,
-              private basicService: BasicService,
-              public cartService: CartService,
-              private cookie: CookieService) {
-  }
-  cartItems: any = 0;
+  constructor(
+    public cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.cartService.updateCartItems();
   }
 
   deleteProductFromCart(id: any) {
-    this.http.delete(this.basicService.url + '/deleteProductFromCart/' + id,
-      {
-        headers: {
-          'Authorization': 'Bearer ' + this.cookie.get('token')
-        }, withCredentials: true}).subscribe({
-      next: () => {
-        this.cartService.updateCartItems();
-      }
-    });
+    this.cartService.deleteProductFromCart(id);
   }
 }

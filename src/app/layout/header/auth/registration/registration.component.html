@@ -8,19 +8,19 @@
       </svg>
       <p>Регистрация</p>
     </div>
-    <form class="auth-form" #regForm="ngForm" (ngSubmit)="onRegistration(email, password)">
-      <div class="error-message" *ngFor="let error of errors">
+    <form class="auth-form" #regForm="ngForm" (ngSubmit)="onRegistration(authService.email, authService.password)">
+      <div class="error-message" *ngFor="let error of authService.message">
         <ng-container *ngIf="error.field === 'email'">
           <span>{{error.defaultMessage}}</span>
         </ng-container>
       </div>
-      <input class="auth-item" type="email" placeholder="email" [(ngModel)]="email" name="email" required>
-      <div class="error-message" *ngFor="let error of errors">
+      <input class="auth-item" type="email" placeholder="email" [(ngModel)]="authService.email" name="email" required>
+      <div class="error-message" *ngFor="let error of authService.message">
         <ng-container *ngIf="error.field === 'password'">
           <span>{{error.defaultMessage}}</span>
         </ng-container>
       </div>
-      <input class="auth-item" type="password" placeholder="password" [(ngModel)]="password" name="password" required>
+      <input class="auth-item" type="password" placeholder="password" [(ngModel)]="authService.password" name="password" required>
       <button class="auth-item" type="submit">Регистрация</button>
     </form>
   </div>

@@ -4,7 +4,7 @@
     <ul class="nav-menu">
       <li *ngIf="!authService.isAuth" (click)="openAuthMenu()">Войти</li>
 <!--      <li *ngIf="!isAuth"><a>Профиль</a></li>-->
-      <li><a [routerLink]="['cart']">Корзина {{cartQty}}</a></li>
+      <li><a [routerLink]="['cart']">Корзина</a></li>
       <li *ngIf="authService.isAuth" (click)="logout()"><button type="submit">Выйти</button></li>
     </ul>
   </nav>

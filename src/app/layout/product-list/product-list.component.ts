@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ActivatedRoute} from "@angular/router";
 import {BasicService} from "../../service/basic.service";
 
 @Component({
@@ -17,12 +16,14 @@ export class ProductListComponent {
   }
 
   ngOnInit(): void {
-    this.http.get<any>(this.basicService.url).subscribe(
+    this.http
+      .get(
+        this.basicService.url)
+      .subscribe(
       {
         next: ((result: any) => {
           this.products = result;
         })
-      }
-    );
+      });
   }
 }

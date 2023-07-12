@@ -5,9 +5,9 @@
       <li class="cart-item">
         <h4>{{item.product.name}}</h4>
         <p>{{item.qty}}</p>
-        <button (click)="productPageComp.removeProduct(item.product.id, 1)"> - </button>
-        <button (click)="productPageComp.addProduct(item.product.id, 1)"> + </button>
-        <button (click)="deleteProductFromCart(item.product.id)"> X </button>
+        <button (click)="cartService.removeProduct(item.product.id, 1)"> - </button>
+        <button (click)="cartService.addProduct(item.product.id, 1)"> + </button>
+        <button (click)="cartService.deleteProductFromCart(item.product.id)"> X </button>
       </li>
     </ul>
   </div>
