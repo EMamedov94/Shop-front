@@ -16,6 +16,8 @@ export class AuthenticationService {
 
   message: any = '';
 
+  isVisibleAuthBlock: boolean = false;
+
   constructor(
     private http: HttpClient,
     private basicService: BasicService,
@@ -24,8 +26,17 @@ export class AuthenticationService {
 
   // Is auth
 
-  get isAuth(): boolean {
-    return localStorage.getItem('auth') != null;
+  isAuth(): boolean {
+    return this.checkTokenValidity();
+  }
+
+  private checkTokenValidity(): boolean {
+    const token = this.cookie.get('token');
+    return !!token;
+  }
+
+  onClose() {
+    this.isVisibleAuthBlock = false;
   }
 
   // Logout
@@ -37,8 +48,8 @@ export class AuthenticationService {
         {})
       .subscribe({
         next: () => {
-          localStorage.clear();
           this.cookie.delete("token");
+          this.checkTokenValidity();
         }
       });
   }
@@ -58,7 +69,7 @@ export class AuthenticationService {
       .subscribe({
         next: (res: any) => {
           this.cookie.set("token", res.token);
-          localStorage.setItem('auth', res.username);
+          this.onClose();
         }
       })
   }

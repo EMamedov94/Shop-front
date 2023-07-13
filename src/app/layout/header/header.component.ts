@@ -12,13 +12,11 @@ export class HeaderComponent {
     public authService: AuthenticationService
   ) {}
 
-  isVisibleAuthBlock: boolean = false;
-
   logout() {
     this.authService.logout();
   }
 
   openAuthMenu() {
-    this.isVisibleAuthBlock = !this.isVisibleAuthBlock;
+    this.authService.isVisibleAuthBlock = !this.authService.isVisibleAuthBlock;
   }
 }

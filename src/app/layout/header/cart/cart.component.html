@@ -1,19 +1,65 @@
-<h1>Корзина</h1>
-<div class="cart-block">
-  <div class="cart-items">
-    <ul *ngFor="let item of cartService.cartItems" class="cart-list">
-      <li class="cart-item">
-        <h4>{{item.product.name}}</h4>
-        <p>{{item.qty}}</p>
-        <button (click)="cartService.removeProduct(item.product.id, 1)"> - </button>
-        <button (click)="cartService.addProduct(item.product.id, 1)"> + </button>
-        <button (click)="cartService.deleteProductFromCart(item.product.id)"> X </button>
-      </li>
-    </ul>
-  </div>
-  <div class="total-block">
-    <p>Количество товаров: {{cartService.totalItems}}</p>
-    <p>Сумма: {{cartService.totalSum}}</p>
-    <button>Перейти к оформлению</button>
+<div class="cart-container main-container">
+  <h1>Корзина</h1>
+  <div class="cart-block">
+
+<!--    Cart items -->
+
+    <div class="cart-items">
+      <ul class="cart-list">
+
+        <li class="cart-item-action">
+          <div class="cart-item-header-name">Наименование товара</div>
+          <div class="cart-item-header-qty">Кол-во</div>
+          <div class="cart-item-header-price">Цена</div>
+        </li>
+
+<!--        Cart item -->
+
+        <li class="cart-item" *ngFor="let item of cartService.cartItems">
+
+<!--          Cart item img -->
+
+          <div class="cart-item-img">
+            <img [src]="item.product.photoUrl" alt="img">
+          </div>
+
+<!--          Cart item action -->
+
+          <div class="cart-item-action">
+
+<!--            Cart item name -->
+
+            <a class="cart-item-name" href="#">{{item.product.name}}</a>
+
+<!--              Cart item counter -->
+
+            <div class="counter counter-small base-bcg-color">
+              <span class="counter-btn-minus" (click)="cartService.removeProduct(item.product.id, 1)"> - </span>
+              <span class="counter-qty">{{item.qty}}</span>
+              <span class="counter-btn-plus" (click)="cartService.addProduct(item.product.id, 1)"> + </span>
+            </div>
+
+<!--              Cart item price -->
+
+            <div class="cart-item-price">
+              <span>{{item.product.price}}</span>
+            </div>
+
+<!--              Cart item delete button -->
+
+            <div class="cart-item-btn-delete" (click)="cartService.deleteProductFromCart(item.product.id)">
+              <svg width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.7457 3.32851C20.3552 2.93798 19.722 2.93798 19.3315 3.32851L12.0371 10.6229L4.74275 3.32851C4.35223 2.93798 3.71906 2.93798 3.32854 3.32851C2.93801 3.71903 2.93801 4.3522 3.32854 4.74272L10.6229 12.0371L3.32856 19.3314C2.93803 19.722 2.93803 20.3551 3.32856 20.7457C3.71908 21.1362 4.35225 21.1362 4.74277 20.7457L12.0371 13.4513L19.3315 20.7457C19.722 21.1362 20.3552 21.1362 20.7457 20.7457C21.1362 20.3551 21.1362 19.722 20.7457 19.3315L13.4513 12.0371L20.7457 4.74272C21.1362 4.3522 21.1362 3.71903 20.7457 3.32851Z" fill="#0F0F0F"/>
+              </svg>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="total-block">
+      <p>Количество товаров: {{cartService.totalItems}}</p>
+      <p>Сумма: {{cartService.totalSum}}</p>
+      <button>Перейти к оформлению</button>
+    </div>
   </div>
 </div>

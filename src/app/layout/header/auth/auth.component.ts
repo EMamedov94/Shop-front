@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthenticationService} from "../../../service/authentication.service";
 
 @Component({
   selector: 'app-auth',
@@ -9,7 +10,9 @@ export class AuthComponent {
   isVisibleLoginBlock: boolean = false;
   isVisibleRegistrationBlock: boolean = false;
 
-  constructor() {}
+  constructor(
+    public authService: AuthenticationService
+  ) {}
 
   openLogin() {
     this.isVisibleLoginBlock = true;

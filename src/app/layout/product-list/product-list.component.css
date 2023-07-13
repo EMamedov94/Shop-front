@@ -2,12 +2,26 @@
   display: flex;
   justify-content: space-between;
 }
-.product_card {
+.product-card {
   display: flex;
   flex-direction: column;
-  width: 200px;
-  height: 200px;
+  margin-right: 25px;
+  width: 250px;
 }
-.product_card-img {
+
+.product-card-img {
   max-width: 100%;
+}
+
+.product-card-name {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.product-card-price {
+  margin-top: 12px;
+}
+.product-card-price .new-price {
+  font-size: 18px;
+  font-weight: 700;
 }
